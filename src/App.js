@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import emailjs from '@emailjs/browser';
 
 function App() {
   const [name, setName] = useState('')
@@ -14,7 +15,22 @@ function App() {
       return
     }
 
-    alert("TESTE")
+    const templateParams = {
+      from_name: name,
+      message: message,
+      email: email,
+    }
+
+    emailjs.send("service_wrq71bb", "template_oljerye", templateParams, "fbVjDAUG2AAEKcZFW")
+    .then((response) => {
+      console.log("Email enviado", response.status, response.text)
+      setName("")
+      setEmail("")
+      setMessage("")
+    }, (error) => {
+      console.log("Erro:", error)
+    })
+
   }
 
   return (
