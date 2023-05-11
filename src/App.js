@@ -6,11 +6,22 @@ function App() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
+  function sendEmail(e){
+    e.preventDefault();
+
+    if(name === "" || email === "" || name === ""){
+      alert("Preencha todos os campos")
+      return
+    }
+
+    alert("TESTE")
+  }
+
   return (
     <div className="container">
       <h1 className="title">Contato</h1>
 
-      <form className="form" onSubmit={() => {}}>
+      <form className="form" onSubmit={sendEmail}>
         <input 
           className="input"
           type="text"
